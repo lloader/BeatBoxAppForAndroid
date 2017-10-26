@@ -46,12 +46,11 @@ public class BeatBoxFragment extends Fragment {
         return fragmentBeatBoxBinding.getRoot();
     }
 
-    private class SoundHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    private class SoundHolder extends RecyclerView.ViewHolder {
         private ListItemSoundBinding mBinding;
 
         public SoundHolder(final ListItemSoundBinding binding) {
             super(binding.getRoot());
-            binding.getRoot().setOnClickListener(this);
             mBinding = binding;
             mBinding.setViewModel(new ViewModel(mBeatBox));
 
@@ -60,11 +59,6 @@ public class BeatBoxFragment extends Fragment {
         public void bind(final Sound sound) {
             mBinding.getViewModel().setSound(sound);
             mBinding.executePendingBindings();
-        }
-
-        @Override
-        public void onClick(View view) {
-            mBeatBox.play(mBinding.getViewModel().getSound());
         }
     }
 
